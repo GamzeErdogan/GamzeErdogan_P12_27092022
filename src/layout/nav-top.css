@@ -1,0 +1,24 @@
+.navHorizantale{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    padding: 0 40px 0 40px;
+    height: 91px;
+    width: auto;
+    gap:100px;
+}
+.navHorizantale--ul{
+    background-color: #020203;
+    color: white;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    font-size: 24px;
+}
+.logo{
+    width: 178px;
+    height: 60px;
+}

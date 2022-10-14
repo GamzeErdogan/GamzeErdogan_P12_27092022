@@ -1,0 +1,37 @@
+.nav{
+    position: relative;
+}
+.navVertical{
+    position: absolute;
+    left: 0;
+    background-color: #020203;
+    width: 117px;
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    gap: 250px;
+    align-items: center;
+    padding-top: 100px;
+}
+.navVertical--ul{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 0;
+    align-items: center;
+}
+.navVertical--li{
+    width: 64px;
+    height: 64px;
+    background-color: #fff;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navVertical--p{
+    color: #fff;
+    transform: rotate(-90deg);
+    width: max-content;
+}
