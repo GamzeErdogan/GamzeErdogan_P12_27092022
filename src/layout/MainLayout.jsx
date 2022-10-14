@@ -7,6 +7,11 @@ import logo from '../images/icons/logo.png'
 import './nav-left.css'
 import './nav-top.css'
 
+
+/**function for creating the fixed page
+ * @component
+ * @returns (<MainLayout />)
+ */
 const MainLayout = () => {
   return (
     <div className='nav'>

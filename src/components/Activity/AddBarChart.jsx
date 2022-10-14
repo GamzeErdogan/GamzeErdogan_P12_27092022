@@ -30,6 +30,12 @@ const getDayNumber = (date) => {
     return objetDate.getDate() 
 }
 
+
+/**function for showing  to bar chart activity
+ * @component
+ * @param {value} userID
+ * @returns (<AddBarChart />)
+ */
 const AddBarChart = ({userID}) => {
 
  const {data:barChartee} = useFetch("http://localhost:3000/user/" + userID + "/activity");

@@ -44,8 +44,13 @@ const StyleScoreTextP = styled.p`
   font-size:16px;
   margin:0;
 `
+/**function for showing  score with pie chart
+ * @component
+ * @param {value} score score of the user
+ * @returns (<AddPieChart />)
+ */
+
 const AddPieChart = ({props}) => {
-  
   return (
     <StyleContainerPieChartDiv>
         <h3>Score</h3>

@@ -35,6 +35,12 @@ const StyleTitleP = styled.p`
     color:#74798C;
     margin:0;
 `
+
+/**function for card information of the user
+ * @component 
+ * @returns ( <CaloryProteinGlucideLipid />)
+ */
+
 const CaloryProteinGlucideLipide = (props) => {
   return (
    <StyleGrandDiv>

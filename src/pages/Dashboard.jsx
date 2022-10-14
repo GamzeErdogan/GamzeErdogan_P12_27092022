@@ -11,7 +11,6 @@ import AddBarChart from '../components/Activity/AddBarChart';
 import AddLineChart from '../components/DurationSession/AddLineChart';
 import AddRadarChart from '../components/AddRadarChart';
 import AddPieChart from '../components/AddPieChart';
-// import Loader from '../components/Loader'
 
 const StyleMain = styled.main`
     margin-left:150px;
@@ -58,7 +57,10 @@ const StyleDownChartContainerDiv = styled.div`
     justify-content:space-between;
 `
 
-
+/**function for the display all the data of the user with charts
+ * @component
+ * @returns <Dashboard />
+ */
 const Dashboard = () => {
     const {id : params}= useParams();
     const  {data : userInformation}  = useData(params);
@@ -77,7 +79,8 @@ const Dashboard = () => {
                 <StyleDownChartContainerDiv>
                     <AddLineChart userID={params}/>
                     <AddRadarChart userID={params} />
-                    <AddPieChart props={userInformation?.todayScore}/>
+                    {userInformation?.todayScore ?  <AddPieChart props={userInformation?.todayScore}/> :
+                     <AddPieChart props={userInformation?.score}/>}
                 </StyleDownChartContainerDiv>
             </StyleChartContainerDiv> 
             <StyleAside>

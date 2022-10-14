@@ -10,6 +10,12 @@ const StyleContainerRadarChartDiv = styled.div`
     background-color:#282D30;
     border-radius:5px;
 `
+/**function for showing  kinds of the activity of the user with radar chart
+ * @component
+ * @param {value} userID
+ * @returns (<AddRadarChart />)
+ */
+
 const AddRadarChart = ({userID}) => {
   const {data:radarCharte} = useFetch("http://localhost:3000/user/" + userID + "/performance");
   

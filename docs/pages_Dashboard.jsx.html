@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: pages/Dashboard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: pages/Dashboard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import {useParams} from 'react-router-dom'
+import CaloryProteinGlucideLipide from '../components/CaloryProteinGlucideLipide';
+import { useData } from '../useFetch';
+import caloriesIcon from '../images/caloriesIcon.png';
+import protein from '../images/protein.png'
+import apple from '../images/apple.png'
+import cheeseburger from '../images/cheeseburger.png'
+import styled from 'styled-components';
+import AddBarChart from '../components/Activity/AddBarChart';
+import AddLineChart from '../components/DurationSession/AddLineChart';
+import AddRadarChart from '../components/AddRadarChart';
+import AddPieChart from '../components/AddPieChart';
+
+const StyleMain = styled.main`
+    margin-left:150px;
+    margin-top:50px;
+`
+const StyleHeaderDiv = styled.div`
+    margin-left:30px;
+`
+const StyleContainerMain = styled.main`
+    display:flex;
+    gap:80px;
+`
+const StyleAside = styled.aside`
+    display:flex;
+    flex-direction:column;
+    height:600px;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-right:40px;
+`
+const StyleNameSpan = styled.span`
+    color:#ff0101;
+    font-size:49px;
+`
+const StyleBonjourP = styled.p`
+    color:black;
+    font-size:48px;
+    margin-bottom:0;
+`
+const StyleChartContainerDiv = styled.div`
+   width:750px;
+   height:350px;
+   display:flex;
+   flex-direction:column;
+   justify-content:space-between;
+   align-items:center;
+   gap:50px;
+   
+`
+const StyleDownChartContainerDiv = styled.div`
+    display:flex;
+    width:750px;
+    gap:10px;
+    justify-content:space-between;
+`
+
+/**function for the display all the data of the user with charts
+ * @component
+ * @returns &lt;Dashboard />
+ */
+const Dashboard = () => {
+    const {id : params}= useParams();
+    const  {data : userInformation}  = useData(params);
+    console.log(userInformation);
+   
+
+  return (
+   &lt;StyleMain>
+        &lt;StyleHeaderDiv>
+          &lt;StyleBonjourP>Bonjour, &lt;StyleNameSpan>{userInformation?.userInfos.firstName}&lt;/StyleNameSpan>&lt;/StyleBonjourP>
+          &lt;p>Félicitation ! Vous avez explosé vos objectifs hier 👏&lt;/p>
+        &lt;/StyleHeaderDiv>
+        &lt;StyleContainerMain>
+            &lt;StyleChartContainerDiv>
+                &lt;AddBarChart userID={params}/>
+                &lt;StyleDownChartContainerDiv>
+                    &lt;AddLineChart userID={params}/>
+                    &lt;AddRadarChart userID={params} />
+                    &lt;AddPieChart props={userInformation?.todayScore}/>
+                &lt;/StyleDownChartContainerDiv>
+            &lt;/StyleChartContainerDiv> 
+            &lt;StyleAside>
+                &lt;CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.calorieCount/1000} IconSource={caloriesIcon} title={'Calories'} unit={'kCal'}/>
+                &lt;CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.proteinCount} IconSource={protein} title={'Protoines'} unit={'g'}/>
+                &lt;CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.carbohydrateCount} IconSource={apple} title={'Glucides'} unit={'g'}/>
+                &lt;CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.lipidCount} IconSource={cheeseburger} title={'Lipides'} unit={'g'}/>
+            &lt;/StyleAside>
+        &lt;/StyleContainerMain>
+    &lt;/StyleMain>
+
+  )
+}
+
+export default Dashboard</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddBarChart">AddBarChart</a></li><li><a href="global.html#AddLineChart">AddLineChart</a></li><li><a href="global.html#AddPieChart">AddPieChart</a></li><li><a href="global.html#AddRadarChart">AddRadarChart</a></li><li><a href="global.html#CaloryProteinGlucideLipide">CaloryProteinGlucideLipide</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#getDayNumber">getDayNumber</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#useData">useData</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#UserList">UserList</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Oct 14 2022 11:19:03 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

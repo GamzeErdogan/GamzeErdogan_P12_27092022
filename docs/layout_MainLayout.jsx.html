@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: useFetch.js</title>
+    <title>JSDoc: Source: layout/MainLayout.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: useFetch.js</h1>
+    <h1 class="page-title">Source: layout/MainLayout.jsx</h1>
 
     
 
@@ -26,45 +26,46 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { useEffect, useState } from "react";
+            <pre class="prettyprint source linenums"><code>import React from 'react'
+import navIcon1 from '../images/icons/navIcon1.png'
+import navIcon2 from '../images/icons/navIcon2.png'
+import navIcon3 from '../images/icons/navIcon3.png'
+import navIcon4 from '../images/icons/navIcon4.png'
+import logo from '../images/icons/logo.png'
+import './nav-left.css'
+import './nav-top.css'
 
-/** for get informations of the users
- * 
- * @param {number} userId id of the user
- * @returns {object} general information of the user
+
+/**function for creating the fixed page
+ * @component
+ * @returns (&lt;MainLayout />)
  */
-export const  useData = ( userId) =>{
-        return useFetch("http://localhost:3000/user/" + userId);
+const MainLayout = () => {
+  return (
+    &lt;div className='nav'>
+        &lt;div className='navHorizantale'>
+            &lt;img className='logo' src={logo} alt='logo of the sport see'/>
+            &lt;ul className='navHorizantale--ul'>
+                &lt;li>Accueil&lt;/li>
+                &lt;li>Profil&lt;/li>
+                &lt;li>Réglage&lt;/li>
+                &lt;li>Communauté&lt;/li>
+            &lt;/ul>
+        &lt;/div>
+        &lt;div className='navVertical'>
+            &lt;ul className='navVertical--ul'>
+                &lt;li className='navVertical--li'>&lt;img src={navIcon2} alt="icon"/>&lt;/li>
+                &lt;li className='navVertical--li'>&lt;img src={navIcon1} alt="icon"/>&lt;/li>
+                &lt;li className='navVertical--li'>&lt;img src={navIcon3} alt="icon"/>&lt;/li>
+                &lt;li className='navVertical--li'>&lt;img src={navIcon4} alt="icon"/>&lt;/li>
+            &lt;/ul>
+            &lt;p className='navVertical--p'>Copyright, SportSee 2020&lt;/p>
+        &lt;/div>
+    &lt;/div>
+  )
 }
 
-
-/** fetch the data from backend
- * 
- * @param {string} url url of the backend
- * @returns {object} includes data,loading,error
- */
-const useFetch = (url) => {
-    const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(null);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        setLoading(true)
-        fetch(url)
-        .then(response => response.json())
-        .then(data => setData(data.data))
-        .catch((err) => {
-            setError(err)
-        })
-        .finally(() => {    
-            setLoading(false)
-        })
-    }, [url]);
-
-    return {data, loading, error}
-}
-
-export default useFetch;</code></pre>
+export default MainLayout</code></pre>
         </article>
     </section>
 

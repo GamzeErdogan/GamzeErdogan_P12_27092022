@@ -27,6 +27,12 @@ const StyleContainerLineChart = styled.div`
     color:white;
     border-radius:5px;
 `
+
+/**function  for showing duration session to line chart
+ * @component
+ * @param {value} userId
+ * @return  (<AddLineChart />)
+ */
 const AddLineChart = ({userID}) => {
     const {data:lineCharte} = useFetch("http://localhost:3000/user/" + userID + "/average-sessions");
     
