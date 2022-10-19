@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: layout/MainLayout.jsx</title>
+    <title>JSDoc: Source: data/UserClasses.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: layout/MainLayout.jsx</h1>
+    <h1 class="page-title">Source: data/UserClasses.js</h1>
 
     
 
@@ -26,46 +26,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import navIcon1 from '../images/icons/navIcon1.png'
-import navIcon2 from '../images/icons/navIcon2.png'
-import navIcon3 from '../images/icons/navIcon3.png'
-import navIcon4 from '../images/icons/navIcon4.png'
-import logo from '../images/icons/logo.png'
-import './nav-left.css'
-import './nav-top.css'
-
-
-/**function for creating the fixed page
- * @component
- * @returns (&lt;MainLayout />)
+            <pre class="prettyprint source linenums"><code>/**
+ * The user class which corresponds to fetched info from Api/Mock
  */
-const MainLayout = () => {
-  return (
-    &lt;div className='nav'>
-        &lt;div className='navHorizantale'>
-            &lt;img className='logo' src={logo} alt='logo of the sport see'/>
-            &lt;ul className='navHorizantale--ul'>
-                &lt;li>Accueil&lt;/li>
-                &lt;li>Profil&lt;/li>
-                &lt;li>Réglage&lt;/li>
-                &lt;li>Communauté&lt;/li>
-            &lt;/ul>
-        &lt;/div>
-        &lt;div className='navVertical'>
-            &lt;ul className='navVertical--ul'>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon2} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon1} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon3} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon4} alt="icon"/>&lt;/li>
-            &lt;/ul>
-            &lt;p className='navVertical--p'>Copyright, SportSee 2020&lt;/p>
-        &lt;/div>
-    &lt;/div>
-  )
+export class User {
+    constructor(data) {
+        this.id = data?.id;
+        this.userInfos = data?.userInfos;
+        this.userName = data?.userInfos?.firstName;
+        this.todayScore = data?.todayScore;
+        this.keyDataCalorie = data?.keyData?.calorieCount;
+        this.keyDataProtein = data?.keyData?.proteinCount;
+        this.keyDataCarbHid = data?.keyData?.carbohydrateCount;
+        this.keyDataLipid = data?.keyData?.lipidCount;
+        if (data?.score) {
+            this.todayScore = data?.score;
+        }
+    }
 }
 
-export default MainLayout</code></pre>
+export class UserActivity {
+    constructor(data) {
+        this.userId = data?.userId;
+        this.sessions = data?.sessions;
+    }
+}
+
+export class UserAverage {
+    constructor(data) {
+        this.sessions = data?.sessions;
+        this.day = data?.day;
+    }
+}
+
+export class UserPerformance {
+    constructor(data) {
+        this.userId = data?.userId;
+        this.kind = data?.kind;
+        this.data = data?.data;
+    }
+}
+</code></pre>
         </article>
     </section>
 

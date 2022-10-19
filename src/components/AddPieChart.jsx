@@ -50,7 +50,8 @@ const StyleScoreTextP = styled.p`
  * @returns (<AddPieChart />)
  */
 
-const AddPieChart = ({props}) => {
+const AddPieChart = ({dataOfPieChart}) => {
+ 
   return (
     <StyleContainerPieChartDiv>
         <h3>Score</h3>
@@ -58,7 +59,7 @@ const AddPieChart = ({props}) => {
             <PieChart width={250} height={250}>
                         <Pie
                             data={[
-                              {  value: props},
+                              {  value:dataOfPieChart},
                               {  value: 1 }]}
                             dataKey="value"
                             innerRadius={70}
@@ -73,7 +74,7 @@ const AddPieChart = ({props}) => {
                         </Pie>
             </PieChart>
             <StyleScoreInfosDiv>
-                    <StyleScoreValueDiv>{props * 100}%</StyleScoreValueDiv>
+                    <StyleScoreValueDiv>{dataOfPieChart * 100}%</StyleScoreValueDiv>
                     <StyleScoreTextP>de votre</StyleScoreTextP>
                     <StyleScoreTextP>objectif</StyleScoreTextP>
             </StyleScoreInfosDiv>

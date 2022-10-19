@@ -4,6 +4,7 @@ import { BrowserRouter,Routes,Route} from "react-router-dom";
 import UserList from './pages/UserList';
 import MainLayout from './layout/MainLayout';
 import * as React from 'react';
+import ErrorPage from './pages/ErrorPage';
 
 function App() {
   return (
@@ -13,6 +14,8 @@ function App() {
           <Routes>
               <Route path='/' element={<UserList />} />
               <Route path='/user/:id' element={<Dashboard />} />
+              <Route path='*' element={<ErrorPage />} />
+              
           </Routes>
         </div>
     </BrowserRouter>

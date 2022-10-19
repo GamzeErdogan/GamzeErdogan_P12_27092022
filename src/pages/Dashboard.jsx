@@ -1,7 +1,7 @@
 import React from 'react'
 import {useParams} from 'react-router-dom'
 import CaloryProteinGlucideLipide from '../components/CaloryProteinGlucideLipide';
-import { useData } from '../useFetch';
+import { useData } from '../data/getData';
 import caloriesIcon from '../images/caloriesIcon.png';
 import protein from '../images/protein.png'
 import apple from '../images/apple.png'
@@ -11,6 +11,7 @@ import AddBarChart from '../components/Activity/AddBarChart';
 import AddLineChart from '../components/DurationSession/AddLineChart';
 import AddRadarChart from '../components/AddRadarChart';
 import AddPieChart from '../components/AddPieChart';
+import ErrorPage from './ErrorPage';
 
 const StyleMain = styled.main`
     margin-left:150px;
@@ -57,37 +58,31 @@ const StyleDownChartContainerDiv = styled.div`
     justify-content:space-between;
 `
 
-/**function for the display all the data of the user with charts
- * @component
- * @returns <Dashboard />
- */
-const Dashboard = () => {
-    const {id : params}= useParams();
-    const  {data : userInformation}  = useData(params);
-    console.log(userInformation);
-   
 
+const Dashboard = () => {
+    const {id : userId}= useParams();
+    const  getUser  = useData(userId);
+    if (!getUser.userName) return <ErrorPage  />
   return (
-   <StyleMain>
+    <StyleMain>
         <StyleHeaderDiv>
-          <StyleBonjourP>Bonjour, <StyleNameSpan>{userInformation?.userInfos.firstName}</StyleNameSpan></StyleBonjourP>
+          <StyleBonjourP>Bonjour, <StyleNameSpan>{ getUser.userName}</StyleNameSpan></StyleBonjourP>
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </StyleHeaderDiv>
         <StyleContainerMain>
             <StyleChartContainerDiv>
-                <AddBarChart userID={params}/>
+                <AddBarChart userID={userId}/>
                 <StyleDownChartContainerDiv>
-                    <AddLineChart userID={params}/>
-                    <AddRadarChart userID={params} />
-                    {userInformation?.todayScore ?  <AddPieChart props={userInformation?.todayScore}/> :
-                     <AddPieChart props={userInformation?.score}/>}
+                    <AddLineChart userID={userId}/>
+                    <AddRadarChart userID={userId} />
+                    <AddPieChart dataOfPieChart={getUser.todayScore}/>
                 </StyleDownChartContainerDiv>
             </StyleChartContainerDiv> 
             <StyleAside>
-                <CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.calorieCount/1000} IconSource={caloriesIcon} title={'Calories'} unit={'kCal'}/>
-                <CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.proteinCount} IconSource={protein} title={'Protoines'} unit={'g'}/>
-                <CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.carbohydrateCount} IconSource={apple} title={'Glucides'} unit={'g'}/>
-                <CaloryProteinGlucideLipide  CalorieSource={userInformation?.keyData.lipidCount} IconSource={cheeseburger} title={'Lipides'} unit={'g'}/>
+                <CaloryProteinGlucideLipide  CalorieSource={ getUser.keyDataCalorie/1000} IconSource={caloriesIcon} title={'Calories'} unit={'kCal'}/>
+                <CaloryProteinGlucideLipide  CalorieSource={ getUser.keyDataProtein} IconSource={protein} title={'Protoines'} unit={'g'}/>
+                <CaloryProteinGlucideLipide  CalorieSource={ getUser.keyDataCarbHid} IconSource={apple} title={'Glucides'} unit={'g'}/>
+                <CaloryProteinGlucideLipide  CalorieSource={ getUser.keyDataLipid} IconSource={cheeseburger} title={'Lipides'} unit={'g'}/>
             </StyleAside>
         </StyleContainerMain>
     </StyleMain>

@@ -12,11 +12,6 @@ const StyleLinkDiv =styled.div`
   display:flex;
   gap:30px;
 `
-
-/**function for the user list
- * @component
- * @returns <UserList />
- */
 const UserList = () => {
   return (
    <StyleGrandDiv>

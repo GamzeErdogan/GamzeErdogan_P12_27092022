@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: layout/MainLayout.jsx</title>
+    <title>JSDoc: Source: pages/ErrorPage.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: layout/MainLayout.jsx</h1>
+    <h1 class="page-title">Source: pages/ErrorPage.jsx</h1>
 
     
 
@@ -26,46 +26,50 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import navIcon1 from '../images/icons/navIcon1.png'
-import navIcon2 from '../images/icons/navIcon2.png'
-import navIcon3 from '../images/icons/navIcon3.png'
-import navIcon4 from '../images/icons/navIcon4.png'
-import logo from '../images/icons/logo.png'
-import './nav-left.css'
-import './nav-top.css'
+            <pre class="prettyprint source linenums"><code>import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
-
-/**function for creating the fixed page
- * @component
- * @returns (&lt;MainLayout />)
+/**
+ * Render a classic 404 page.
+ * @returns {JSX.Element}
+ * @constructor
  */
-const MainLayout = () => {
+function ErrorPage() {
   return (
-    &lt;div className='nav'>
-        &lt;div className='navHorizantale'>
-            &lt;img className='logo' src={logo} alt='logo of the sport see'/>
-            &lt;ul className='navHorizantale--ul'>
-                &lt;li>Accueil&lt;/li>
-                &lt;li>Profil&lt;/li>
-                &lt;li>Réglage&lt;/li>
-                &lt;li>Communauté&lt;/li>
-            &lt;/ul>
-        &lt;/div>
-        &lt;div className='navVertical'>
-            &lt;ul className='navVertical--ul'>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon2} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon1} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon3} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon4} alt="icon"/>&lt;/li>
-            &lt;/ul>
-            &lt;p className='navVertical--p'>Copyright, SportSee 2020&lt;/p>
-        &lt;/div>
-    &lt;/div>
+    &lt;Container>
+      &lt;h1>Oupppss!&lt;/h1>
+      &lt;h1>404&lt;/h1>
+      &lt;p>La user ou la page que vous recherchez n'existe pas&lt;/p>
+      &lt;Link to="/">Retourner à la page d'accueil&lt;/Link>
+    &lt;/Container>
   )
 }
 
-export default MainLayout</code></pre>
+export default ErrorPage
+
+const Container = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h1 {
+    font-size: 6rem;
+    color: red;
+  }
+  p {
+    font-size: 1.5rem;
+    margin: 2rem;
+  }
+  a,
+  a:visited {
+    color: dodgerblue;
+    font-size: 1.25rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+`</code></pre>
         </article>
     </section>
 

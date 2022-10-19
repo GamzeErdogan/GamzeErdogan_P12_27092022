@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: layout/MainLayout.jsx</title>
+    <title>JSDoc: Source: data/getData.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: layout/MainLayout.jsx</h1>
+    <h1 class="page-title">Source: data/getData.js</h1>
 
     
 
@@ -26,46 +26,48 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import navIcon1 from '../images/icons/navIcon1.png'
-import navIcon2 from '../images/icons/navIcon2.png'
-import navIcon3 from '../images/icons/navIcon3.png'
-import navIcon4 from '../images/icons/navIcon4.png'
-import logo from '../images/icons/logo.png'
-import './nav-left.css'
-import './nav-top.css'
+            <pre class="prettyprint source linenums"><code>import {
+    useData as mockUseData,
+    useDataActivity as mockUseDataActivity,
+    useDataAverage as mockUseDataAverage,
+    useDataPerformance as mocUseDataPerformance,
+} from "./USE_MOCK";
+import {
+    useData as apiUseData,
+    useDataActivity as apiUseDataActivity,
+    useDataAverage as apiUseDataAverage,
+    useDataPerformance as apiUseDataPerformance,
+} from "./useFetch";
+import { MOCK_ACTIVE } from "./index";
 
-
-/**function for creating the fixed page
- * @component
- * @returns (&lt;MainLayout />)
+/**if mock=true, this function calls Mock data
+ *
+ * @param {number} userId id of user
  */
-const MainLayout = () => {
-  return (
-    &lt;div className='nav'>
-        &lt;div className='navHorizantale'>
-            &lt;img className='logo' src={logo} alt='logo of the sport see'/>
-            &lt;ul className='navHorizantale--ul'>
-                &lt;li>Accueil&lt;/li>
-                &lt;li>Profil&lt;/li>
-                &lt;li>Réglage&lt;/li>
-                &lt;li>Communauté&lt;/li>
-            &lt;/ul>
-        &lt;/div>
-        &lt;div className='navVertical'>
-            &lt;ul className='navVertical--ul'>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon2} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon1} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon3} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon4} alt="icon"/>&lt;/li>
-            &lt;/ul>
-            &lt;p className='navVertical--p'>Copyright, SportSee 2020&lt;/p>
-        &lt;/div>
-    &lt;/div>
-  )
-}
+export const useData = (userId) =>
+    MOCK_ACTIVE ? mockUseData(userId) : apiUseData(userId);
 
-export default MainLayout</code></pre>
+/**if mock=true, this function calls Mock data Activity of user
+ *
+ * @param {number} userId id of user
+ */
+export const useDataActivity = (userId) =>
+    MOCK_ACTIVE ? mockUseDataActivity(userId) : apiUseDataActivity(userId);
+
+/**if mock=true, this function calls Mock data Average of user
+ *
+ * @param {number} userId id of user
+ */
+export const useDataAverage = (userId) =>
+    MOCK_ACTIVE ? mockUseDataAverage(userId) : apiUseDataAverage(userId);
+
+/**if mock=true, this function calls Mock data Performance of user
+ *
+ * @param {number} userId
+ */
+export const useDataPerformance = (userId) =>
+    MOCK_ACTIVE ? mocUseDataPerformance(userId) : apiUseDataPerformance(userId);
+</code></pre>
         </article>
     </section>
 

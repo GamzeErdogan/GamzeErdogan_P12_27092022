@@ -26,16 +26,16 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import useFetch from '../../useFetch'
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-import PropTypes from 'prop-types'
-import './barChartCustomTool.css'
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import PropTypes from "prop-types";
+import "./barChartCustomTool.css";
+import { useDataActivity } from "../../data/getData";
 
-/** 
+/**
  *  tooltip of Bar chart
- * 
- * @param {*} param0 
+ *
+ * @param {*} param0
  * @returns (custom tooltip)
  */
 
@@ -45,66 +45,105 @@ const CustomTooltip = ({ active, payload }) => {
             &lt;div className="poids">{`${payload[0].value} Kg`}&lt;/div>
             &lt;div className="calories">{`${payload[1].value} KCal`}&lt;/div>
         &lt;/div>
-    ) : null
-}
+    ) : null;
+};
 
 /**get days of the month
- * 
- * @param {string} date 
+ *
+ * @param {string} date
  * @returns  days of the months
  */
 const getDayNumber = (date) => {
-    const objetDate = new Date(date)
-    return objetDate.getDate() 
-}
-
+    const objetDate = new Date(date);
+    return objetDate.getDate();
+};
 
 /**function for showing  to bar chart activity
  * @component
  * @param {value} userID
  * @returns (&lt;AddBarChart />)
  */
-const AddBarChart = ({userID}) => {
+const AddBarChart = ({ userID }) => {
+    const getUserActivity = useDataActivity(userID);
 
- const {data:barChartee} = useFetch("http://localhost:3000/user/" + userID + "/activity");
-
-  return (
-    &lt;div style={{backgroundColor:'#FBFBFB',paddingLeft:'40px'}}>
-         &lt;header style={{display:'flex',gap:'220px'}}>
+    return (
+        &lt;div style={{ backgroundColor: "#FBFBFB", paddingLeft: "40px" }}>
+            &lt;header style={{ display: "flex", gap: "220px" }}>
                 &lt;h3>Activité quotidienne&lt;/h3>
-                &lt;div style={{display:'flex',gap:'20px'}}>
-                    &lt;div style={{display:'flex',gap:'5px',alignItems:'center'}}>
-                        &lt;div style={{borderRadius:'100px',backgroundColor:"#282D30",width:'10px',height:'10px'}}>&lt;/div>
-                        &lt;span style={{color:'#74798C',fontSize:'14px'}}> Poids (kg)&lt;/span>
+                &lt;div style={{ display: "flex", gap: "20px" }}>
+                    &lt;div
+                        style={{
+                            display: "flex",
+                            gap: "5px",
+                            alignItems: "center",
+                        }}
+                    >
+                        &lt;div
+                            style={{
+                                borderRadius: "100px",
+                                backgroundColor: "#282D30",
+                                width: "10px",
+                                height: "10px",
+                            }}
+                        >&lt;/div>
+                        &lt;span style={{ color: "#74798C", fontSize: "14px" }}>
+                            {" "}
+                            Poids (kg)
+                        &lt;/span>
                     &lt;/div>
-                    &lt;div style={{display:'flex',gap:'5px',alignItems:'center'}}>
-                    &lt;div style={{borderRadius:'100px',backgroundColor:"#E60000",width:'10px',height:'10px'}}>&lt;/div>
-                        &lt;span style={{color:'#74798C',fontSize:'14px'}}> Calories brûlées (kCal)&lt;/span>
+                    &lt;div
+                        style={{
+                            display: "flex",
+                            gap: "5px",
+                            alignItems: "center",
+                        }}
+                    >
+                        &lt;div
+                            style={{
+                                borderRadius: "100px",
+                                backgroundColor: "#E60000",
+                                width: "10px",
+                                height: "10px",
+                            }}
+                        >&lt;/div>
+                        &lt;span style={{ color: "#74798C", fontSize: "14px" }}>
+                            {" "}
+                            Calories brûlées (kCal)
+                        &lt;/span>
                     &lt;/div>
                 &lt;/div>
             &lt;/header>
-      
-        &lt;BarChart width={730} height={250} data={barChartee?.sessions}>
-            &lt;CartesianGrid strokeDasharray="3 3" horizontal="true" vertical="" />
-            &lt;XAxis dataKey="day" tickFormatter={getDayNumber}/>
-            &lt;YAxis  dataKey="calories"  orientation="right" />
-            &lt;Tooltip content={CustomTooltip} />
-            &lt;Bar  dataKey="kilogram"
-                        fill="#282D30"
-                        barSize={7}
-                        radius={[50, 50, 0, 0]}/>
-            &lt;Bar  dataKey="calories"
-                        fill="#E60000"
-                        barSize={7}
-                        radius={[50, 50, 0, 0]} />
-        &lt;/BarChart>
-    &lt;/div>
-  )
-}
+
+            &lt;BarChart width={730} height={250} data={getUserActivity.sessions}>
+                &lt;CartesianGrid
+                    strokeDasharray="3 3"
+                    horizontal="true"
+                    vertical=""
+                />
+                &lt;XAxis dataKey="day" tickFormatter={getDayNumber} />
+                &lt;YAxis dataKey="calories" orientation="right" />
+                &lt;Tooltip content={CustomTooltip} />
+                &lt;Bar
+                    dataKey="kilogram"
+                    fill="#282D30"
+                    barSize={7}
+                    radius={[50, 50, 0, 0]}
+                />
+                &lt;Bar
+                    dataKey="calories"
+                    fill="#E60000"
+                    barSize={7}
+                    radius={[50, 50, 0, 0]}
+                />
+            &lt;/BarChart>
+        &lt;/div>
+    );
+};
 AddBarChart.prototype = {
-    userID : PropTypes.number.isRequired
-}
-export default AddBarChart</code></pre>
+    userID: PropTypes.number.isRequired,
+};
+export default AddBarChart;
+</code></pre>
         </article>
     </section>
 
@@ -114,13 +153,13 @@ export default AddBarChart</code></pre>
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#AddBarChart">AddBarChart</a></li><li><a href="global.html#AddLineChart">AddLineChart</a></li><li><a href="global.html#AddPieChart">AddPieChart</a></li><li><a href="global.html#AddRadarChart">AddRadarChart</a></li><li><a href="global.html#CaloryProteinGlucideLipide">CaloryProteinGlucideLipide</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#Dashboard">Dashboard</a></li><li><a href="global.html#getDayNumber">getDayNumber</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#useData">useData</a></li><li><a href="global.html#useFetch">useFetch</a></li><li><a href="global.html#UserList">UserList</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ErrorPage.html">ErrorPage</a></li><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AddBarChart">AddBarChart</a></li><li><a href="global.html#AddLineChart">AddLineChart</a></li><li><a href="global.html#AddPieChart">AddPieChart</a></li><li><a href="global.html#AddRadarChart">AddRadarChart</a></li><li><a href="global.html#CaloryProteinGlucideLipide">CaloryProteinGlucideLipide</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#getDayNumber">getDayNumber</a></li><li><a href="global.html#MainLayout">MainLayout</a></li><li><a href="global.html#useData">useData</a></li><li><a href="global.html#useDataActivity">useDataActivity</a></li><li><a href="global.html#useDataAverage">useDataAverage</a></li><li><a href="global.html#useDataPerformance">useDataPerformance</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Fri Oct 14 2022 13:13:06 GMT+0200 (heure d’été d’Europe centrale)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Wed Oct 19 2022 10:49:08 GMT+0200 (heure d’été d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

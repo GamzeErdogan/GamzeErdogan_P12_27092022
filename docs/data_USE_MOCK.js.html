@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: layout/MainLayout.jsx</title>
+    <title>JSDoc: Source: data/USE_MOCK.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: layout/MainLayout.jsx</h1>
+    <h1 class="page-title">Source: data/USE_MOCK.js</h1>
 
     
 
@@ -26,46 +26,61 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react'
-import navIcon1 from '../images/icons/navIcon1.png'
-import navIcon2 from '../images/icons/navIcon2.png'
-import navIcon3 from '../images/icons/navIcon3.png'
-import navIcon4 from '../images/icons/navIcon4.png'
-import logo from '../images/icons/logo.png'
-import './nav-left.css'
-import './nav-top.css'
+            <pre class="prettyprint source linenums"><code>import {
+    USER_MAIN_DATA,
+    USER_ACTIVITY,
+    USER_AVERAGE_SESSIONS,
+    USER_PERFORMANCE,
+} from "./MOCK";
+import {
+    User,
+    UserActivity,
+    UserAverage,
+    UserPerformance,
+} from "./UserClasses";
 
-
-/**function for creating the fixed page
- * @component
- * @returns (&lt;MainLayout />)
+/**
+ *
+ * @param {number} userId
+ * @returns {class} User of chosen user
  */
-const MainLayout = () => {
-  return (
-    &lt;div className='nav'>
-        &lt;div className='navHorizantale'>
-            &lt;img className='logo' src={logo} alt='logo of the sport see'/>
-            &lt;ul className='navHorizantale--ul'>
-                &lt;li>Accueil&lt;/li>
-                &lt;li>Profil&lt;/li>
-                &lt;li>Réglage&lt;/li>
-                &lt;li>Communauté&lt;/li>
-            &lt;/ul>
-        &lt;/div>
-        &lt;div className='navVertical'>
-            &lt;ul className='navVertical--ul'>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon2} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon1} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon3} alt="icon"/>&lt;/li>
-                &lt;li className='navVertical--li'>&lt;img src={navIcon4} alt="icon"/>&lt;/li>
-            &lt;/ul>
-            &lt;p className='navVertical--p'>Copyright, SportSee 2020&lt;/p>
-        &lt;/div>
-    &lt;/div>
-  )
-}
+export const useData = (userId) => {
+    return new User(USER_MAIN_DATA.find((item) => (item.id = userId)));
+};
 
-export default MainLayout</code></pre>
+/**
+ *
+ * @param {number} userId
+ * @returns {class} UserActivity of chosen user
+ */
+export const useDataActivity = (userId) => {
+    return new UserActivity(
+        USER_ACTIVITY.find((item) => (item.userId = userId))
+    );
+};
+
+/**
+ *
+ * @param {number} userId
+ * @returns {class} UserAverage of chosen user
+ */
+export const useDataAverage = (userId) => {
+    return new UserAverage(
+        USER_AVERAGE_SESSIONS.find((item) => (item.userId = userId))
+    );
+};
+
+/**
+ *
+ * @param {number} userId
+ * @returns {class} UserPerformance of chosen user
+ */
+export const useDataPerformance = (userId) => {
+    return new UserPerformance(
+        USER_PERFORMANCE.find((item) => (item.userId = userId))
+    );
+};
+</code></pre>
         </article>
     </section>
 
