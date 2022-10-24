@@ -3,7 +3,7 @@ import {
     USER_ACTIVITY,
     USER_AVERAGE_SESSIONS,
     USER_PERFORMANCE,
-} from "./MOCK";
+} from "./mock";
 import {
     User,
     UserActivity,
