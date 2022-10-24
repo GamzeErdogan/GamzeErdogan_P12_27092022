@@ -20,7 +20,7 @@ const CustomTooltip = ({ active, payload }) => {
     ) : null;
 };
 
-/**get days of the month
+/**for get days of the month
  *
  * @param {string} date
  * @returns  days of the months
@@ -32,7 +32,7 @@ const getDayNumber = (date) => {
 
 /**function for showing  to bar chart activity
  * @component
- * @param {value} userID
+ * @param {number} userID id of user
  * @returns (<AddBarChart />)
  */
 const AddBarChart = ({ userID }) => {

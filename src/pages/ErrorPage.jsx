@@ -1,17 +1,24 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-/**
- * Render a classic 404 page.
- * @returns {JSX.Element}
- * @constructor
+/**function for the page of the error
+ * @component
+ *
+ * @returns (<ErrorPage />)
  */
-function ErrorPage() {
+function ErrorPage({ props }) {
     return (
         <Container>
-            <h1>Oupppss!</h1>
-            <h1>404</h1>
-            <p>La user ou la page que vous recherchez n'existe pas</p>
+            {props ? (
+                <p>{props}</p>
+            ) : (
+                <StyleContainerDiv>
+                    <h1>Oupppss!</h1>
+                    <h1>404</h1>
+                    <p>La page que vous recherchez n'existe pas</p>
+                </StyleContainerDiv>
+            )}
+
             <Link to="/">Retourner à la page d'accueil</Link>
         </Container>
     );
@@ -20,7 +27,7 @@ function ErrorPage() {
 export default ErrorPage;
 
 const Container = styled.div`
-    flex: 1;
+    flex: display;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -41,4 +48,11 @@ const Container = styled.div`
     a:hover {
         text-decoration: underline;
     }
+`;
+const StyleContainerDiv = styled.div`
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `;

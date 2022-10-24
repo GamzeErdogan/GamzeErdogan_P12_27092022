@@ -4,7 +4,6 @@ import styled from "styled-components";
 import "./lineChartCustomTool.css";
 import PropTypes from "prop-types";
 import { useDataAverage } from "../../data/getData";
-// import {useDataAverage} from '../../data/USE_MOCK'
 
 /**
  *  tooltip of lineChart
@@ -30,7 +29,7 @@ const StyleContainerLineChart = styled.div`
 
 /**function  for showing duration session to line chart
  * @component
- * @param {value} userId
+ * @param {number} userId id of the user
  * @return  (<AddLineChart />)
  */
 const AddLineChart = ({ userID }) => {

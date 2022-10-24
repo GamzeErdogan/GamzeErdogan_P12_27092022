@@ -15,7 +15,6 @@ import {
 export const useData = (userId) => {
     const fetchUrl = "http://localhost:3000/user/" + userId;
     const fetchedValue = useFetch(fetchUrl);
-
     return new User(fetchedValue.data);
 };
 
@@ -65,7 +64,7 @@ export const useDataPerformance = (userId) => {
  * @param {string} url url of the backend
  * @returns {object} includes data,loading,error
  */
-const useFetch = (url) => {
+const  useFetch =  (url) => {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);

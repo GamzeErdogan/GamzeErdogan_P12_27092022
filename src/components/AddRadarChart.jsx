@@ -3,7 +3,6 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis } from "recharts";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import { useDataPerformance } from "../data/getData";
-// import { useDataPerformance } from '../data/USE_MOCK';
 
 const StyleContainerRadarChartDiv = styled.div`
     width: 258px;
@@ -13,13 +12,12 @@ const StyleContainerRadarChartDiv = styled.div`
 `;
 /**function for showing  kinds of the activity of the user with radar chart
  * @component
- * @param {value} userID
+ * @param {number} userID id of the user
  * @returns (<AddRadarChart />)
  */
 
 const AddRadarChart = ({ userID }) => {
     const getUserPerformance = useDataPerformance(userID);
-    console.log("getUserPerformance", getUserPerformance);
 
     const kind = {
         1: "Intensité",
@@ -42,7 +40,7 @@ const AddRadarChart = ({ userID }) => {
         <StyleContainerRadarChartDiv>
             <RadarChart
                 outerRadius={90}
-                width={268}
+                width={258}
                 height={263}
                 data={getUserPerformance.data}
             >

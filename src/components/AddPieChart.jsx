@@ -46,7 +46,7 @@ const StyleScoreTextP = styled.p`
 `
 /**function for showing  score with pie chart
  * @component
- * @param {value} score score of the user
+ * @param {number} score score of the user
  * @returns (<AddPieChart />)
  */
 
@@ -84,6 +84,6 @@ const AddPieChart = ({dataOfPieChart}) => {
 }
 
 AddPieChart.prototype = {
-  props : PropTypes.number.isRequired
+  dataOfPieChart : PropTypes.number.isRequired
 }
 export default AddPieChart
