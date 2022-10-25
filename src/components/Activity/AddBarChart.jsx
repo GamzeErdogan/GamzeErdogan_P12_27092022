@@ -39,7 +39,7 @@ const AddBarChart = ({ userID }) => {
     const getUserActivity = useDataActivity(userID);
 
     return (
-        <div style={{ backgroundColor: "#FBFBFB", paddingLeft: "40px" }}>
+        <div style={{ backgroundColor: "#FBFBFB", paddingLeft: "40px",marginLeft:'40px',paddingRight:'20px' }}>
             <header style={{ display: "flex", gap: "220px" }}>
                 <h3>Activité quotidienne</h3>
                 <div style={{ display: "flex", gap: "20px" }}>

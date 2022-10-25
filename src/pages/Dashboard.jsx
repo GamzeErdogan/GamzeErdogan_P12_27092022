@@ -15,14 +15,15 @@ import ErrorPage from "./ErrorPage";
 
 /**function for showing profile page
  * @component
- * 
+ *
  * @returns (<AddPieChart />)
  */
 const Dashboard = () => {
     const { id: userId } = useParams();
     const getUser = useData(userId);
-    if (!getUser?.userName) return <ErrorPage props={'L`utilisateur est introuvable'}/>;
-    
+    if (!getUser?.userName)
+        return <ErrorPage props={"L`utilisateur est introuvable"} />;
+
     return (
         <StyleMain>
             <StyleHeaderDiv>
@@ -82,16 +83,31 @@ const StyleHeaderDiv = styled.div`
 `;
 const StyleContainerMain = styled.main`
     display: flex;
-    gap: 80px;
+    flex-wrap: wrap;
+    gap: 300px;
+    align-items: flex-start;
+    @media screen and (min-width: 1300px) {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 100px;
+    }
 `;
 const StyleAside = styled.aside`
     display: flex;
-    flex-direction: column;
-    height: 600px;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 700px;
     justify-content: space-between;
     align-items: flex-end;
     margin-right: 40px;
+    @media screen and (min-width: 1400px) {
+        width: 250px;
+        height: 600px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 `;
+
 const StyleNameSpan = styled.span`
     color: #ff0101;
     font-size: 49px;

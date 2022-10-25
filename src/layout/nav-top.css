@@ -1,14 +1,14 @@
-.navHorizantale{
+.navHorizantale {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: black;
-    padding: 0 40px 0 40px;
     height: 91px;
-    width: auto;
-    gap:100px;
+    width: 100vw;
+    gap: 70px;
 }
-.navHorizantale--ul{
+
+.navHorizantale--ul {
     background-color: #020203;
     color: white;
     list-style: none;
@@ -17,8 +17,9 @@
     align-items: center;
     width: 80%;
     font-size: 24px;
+    margin-right: 20px;
 }
-.logo{
+.logo {
     width: 178px;
     height: 60px;
 }

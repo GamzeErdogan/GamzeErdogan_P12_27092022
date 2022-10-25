@@ -1,2 +1,2 @@
 //Project constants
-export const MOCK_ACTIVE = false;
+export const MOCK_ACTIVE = true;
